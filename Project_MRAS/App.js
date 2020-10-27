@@ -1,21 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { StyleSheet,Button, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './Components/LoginScreen';
+import Register from './Components/RegisterScreen';
+import Home from './Components/HomeScreen';
 
-export default function App() {
+
+function LoginScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Login navigation={navigation}/>
   );
 }
 
+function RegisterScreen({ navigation }) {
+  return (
+    <Register navigation={navigation}/>
+  );
+}
+
+function HomeScreen({ navigation })
+{
+  return(
+    <Home navigation={navigation}/>
+  );
+}
+
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Home" component={HomeScreen}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
+
+
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    borderBottomColor:'black',
+    borderWidth:1, 
+    padding: 10, 
+    marginBottom: 5,
+    marginTop: 5
   },
 });
