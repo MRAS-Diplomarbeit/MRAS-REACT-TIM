@@ -15,14 +15,14 @@ function LoginScreen({ navigation }) {
 
 function RegisterScreen({ navigation }) {
   return (
-    <Register navigation={navigation}/>
+    <Register props={navigation}/>
   );
 }
 
 function HomeScreen({ navigation })
 {
   return(
-    <Home navigation={navigation}/>
+    <Home props={navigation}/>
   );
 }
 
@@ -53,3 +53,4 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
 });
+

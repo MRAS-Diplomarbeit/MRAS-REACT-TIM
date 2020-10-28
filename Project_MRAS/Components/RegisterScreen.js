@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 
-const Register = props => {
+function Register ({props}) {
     return (
         <View style={{ padding: 30}}>
           <Text>Register Screen</Text>
@@ -12,7 +12,7 @@ const Register = props => {
           <TextInput placeholder="Password" style={styles.container}/>
           <TextInput placeholder="Confirm Password" style={styles.container}/>
     
-          <Button title="Register"onPress={() => navigation.navigate('Home')}/>
+          <Button title="Register"onPress={() => props.navigate('Home')}/>
         </View>
       );
 }

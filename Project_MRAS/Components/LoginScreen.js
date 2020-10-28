@@ -1,22 +1,43 @@
 import * as React from 'react';
-import { StyleSheet,Button, View, Text } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { Component } from 'react';
+import { StyleSheet,Button, View, Text,TextInput } from 'react-native';
 
 
+class User extends Component{
+  state = {
+    userName: '',
+    password: ''
+  }
 
-const Login = props => {
+  handleUserName = (text) => {
+    alert(text);
+    this.setState({userName: text });
+  }
+  handlePassword = (text) => {
+    this.setState({password: text });
+  }
+  login = (email, pass) => {
+    alert('email: ' + email + ' password: ' + pass);
+ }
+}
+
+
+   function Login ({navigation}) {
+
+
     return (
         <View style={{ padding: 30}}>
           <Text>Login Screen</Text>
-          <TextInput placeholder="Username" style={styles.container}/>
-          <TextInput placeholder="Password" style={styles.container}/>
-          <Button title="Login"onPress={() => props.navigation.navigate('Home') }/>
-          <Button title="Register"onPress={() => props.navigation.navigate('Register')}/>
+          <TextInput onChangeText = {User.handleUserName} placeholder="Username" style={styles.container}/>
+          <TextInput onChangeText = {User.handlePassword} placeholder="Password" style={styles.container}/>
+          <Button title="Login" onPress = {() => User.login(User.state.email, User.state.password)}/>
+          <Button title="Register" onPress={() => navigation.navigate('Register')}/>
         </View>
       );
+
+      
 }
 
-export default Login;
 
 const styles = StyleSheet.create({
     container: {
@@ -27,3 +48,14 @@ const styles = StyleSheet.create({
       marginTop: 5
     },
   });
+
+export default Login;
+
+
+
+
+
+
+
+
+
