@@ -46,7 +46,27 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center"
-      }
+      },
+      resLogButton: {
+        backgroundColor: 'dodgerblue',
+        borderRadius: 25,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 15,
+        width: '100%'
+    },
+    resLogButtonText:{
+       color: '#fff',
+       fontSize: 18,
+       textTransform: 'uppercase',
+       fontWeight: 'bold'
+    },
+    textInput: {
+      color: '#fff',
+      fontSize: 25,
+    
+
+    }
 });
 
 export default styles;

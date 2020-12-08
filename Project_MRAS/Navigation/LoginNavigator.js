@@ -5,7 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../Screens/LoginScreen';
 import RegisterScreen from '../Screens/RegisterScreen';
 import HomeScreen from '../Screens/HomeScreen';
-import { ImageBackground,StyleSheet } from 'react-native';
+
 
 
 const Stack = createStackNavigator();

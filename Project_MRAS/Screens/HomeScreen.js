@@ -4,15 +4,15 @@ import { TextInput } from 'react-native-gesture-handler';
 
 
 
-const Login = props => {
+const HomeScreen = ({navigation}) => {
     return (
         <View style={{ padding: 30}}>
-          <Text>Hoe Screen</Text>
+          <Text>Home Screen</Text>
         </View>
       );
 }
 
-export default Login;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -23,3 +23,4 @@ const styles = StyleSheet.create({
       marginTop: 5
     },
   });
+  
