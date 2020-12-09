@@ -4,11 +4,10 @@ import { TextInput } from 'react-native-gesture-handler';
 import styles from "../Components/styles";
 import AppButton from '../Components/Buttons/AppButton';
 import { useState } from 'react';
-import DeviceInfo from 'react-native-device-info';
+//import DeviceInfo from 'react-native-device-info';
 
 
-
-
+//const uniqueId = DeviceInfo.getUniqueID();
 
 
 const Register = ({navigation}) => {
@@ -19,7 +18,7 @@ const Register = ({navigation}) => {
 
 
     return(
-    <ImageBackground blurRadius={5} style={styles.background} source={require("../assets/hintergrund2.jpg")}>
+    <ImageBackground blurRadius={4} style={styles.background} source={require("../assets/hintergrund2.jpg")}>
     
 
       <SafeAreaView style={styles.container}>
@@ -55,6 +54,6 @@ const tryToRegister = (navigation,userName,userPassword,userPasswordConf) =>{
   }
   else
   {
-    alert(DeviceInfo.getMacAddress());
+    //alert(uniqueId);
   }
 }
