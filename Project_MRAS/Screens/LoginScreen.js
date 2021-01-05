@@ -9,7 +9,6 @@ import styles from "../Components/styles";
 
 
 
-
    const Login = ({navigation}) => {
 
     const [userName,setUsername] = useState("userName");

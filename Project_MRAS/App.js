@@ -3,24 +3,34 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import LoginNavigator from './routes/LoginNavigator';
-import SpeakerDetails from './Screens/SpeakerDetails';
-import SpeakerOverview from './Screens/SpeakerOverview';
-import WelcomeScreen from './Screens/WelcomeScreen'
+import LoadService from './services/LoadService';
+import { StyleSheet, SafeAreaView, Platform, View, Text, ImageBackground } from 'react-native';
 
 
 
+export default class App extends React.Component{
+  state = {
+    loaded:false
+  }
+  constructor(){
+    super();
+    LoadService.load(v => this.setState({loaded: true}));
+  }
 
+  render(){
+    return(
+      <NavigationContainer>
+        
+         <LoginNavigator/>
+        
+      </NavigationContainer>
+    );
+  }
 
-
-
-
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      
-      <LoginNavigator />
-
-   </NavigationContainer>
-  );
 }
+
+/*
+<LoginNavigator/>
+*/
+
+
