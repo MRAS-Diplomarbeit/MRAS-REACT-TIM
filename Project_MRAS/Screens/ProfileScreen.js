@@ -7,7 +7,7 @@ import FrontPageHeading from '../Components/FrontPageHeading';
 import styles from "../Components/styles";
 
 
-function WelcomeScreen(props) {
+function ProfileScreen(props) {
     //const handlePress = () => console.log("Text pressed"); <MaterialCommunityIcons name = "email" size={60} color="dodgerblue"/>
   return (
     <ImageBackground blurRadius={4} style={styles.background} source={require("../assets/hintergrund.jpg")}>
@@ -24,4 +24,4 @@ function WelcomeScreen(props) {
   );
 }
 
-export default WelcomeScreen;
+export default ProfileScreen;

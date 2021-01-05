@@ -1,8 +1,8 @@
 import React from 'react';
 import {MaterialIcons} from '@expo/vector-icons';
 import { StyleSheet, SafeAreaView, Platform, View, Text, ImageBackground } from 'react-native';
-import publicStyles from "../components/styles";
-import Subheading from "../components/Subheading";
+import publicStyles from "../Components/styles";
+import Subheading from "../Components/Subheading";
 
 function SpeakerDetails(props) {
     return (

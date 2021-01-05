@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { FlatList, ImageBackground, SafeAreaView, TouchableHighlight, TouchableOpacity, View, Alert } from 'react-native';
-import Card from "../components/Card";
-import CardDeleteAction from '../components/CardDeleteAction';
-import styles from "../components/styles";
+import Card from "../Components/Card";
+import CardDeleteAction from '../Components/CardDeleteAction';
+import styles from "../Components/styles";
 import Screen from './Screen';
 
 const initSpeakers = [
@@ -26,7 +26,7 @@ const initSpeakers = [
     }
 ]
 
-function ViewImageScreen(props) {
+function ViewImageScreen({navigation}) {
     const [speakers, setSpeakers] = useState(initSpeakers);
     const [refreshing, setRefreshing] = useState(false);
 
@@ -52,9 +52,8 @@ function ViewImageScreen(props) {
                             title = {item.title} 
                             describtion = {item.describtion} 
                             room = {item.room} 
-                            onPress={() => console.log()}
-                            renderRightActions={() => (<CardDeleteAction onPress={() => deleteAbfrage(item)}/>
-                            )}
+                            onPress={() => navigation.navigate("SpeakerDetails")}
+                            renderRightActions={() => (<CardDeleteAction onPress={() => deleteAbfrage(item)}/>)}
                         />
                     )
                 }

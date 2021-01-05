@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { StyleSheet,Button, View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import MainTabNavigator from '../routes/MainTabNavigator';
+
 
 
 
 const HomeScreen = ({navigation}) => {
     return (
-        <View style={{ padding: 30}}>
-          <Text>Home Screen</Text>
-        </View>
+
+      
+      
+      <MainTabNavigator />
+
+     
+        
       );
 }
 
