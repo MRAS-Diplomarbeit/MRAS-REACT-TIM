@@ -9,28 +9,70 @@ import { StyleSheet, SafeAreaView, Platform, View, Text, ImageBackground } from 
 
 
 export default class App extends React.Component{
-  state = {
-    loaded:false
-  }
-  constructor(){
-    super();
-    LoadService.load(v => this.setState({loaded: true}));
+
+  constructor(props){
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      users: []
+    };
   }
 
-  render(){
-    return(
-      <NavigationContainer>
+  componentDidMount() {
+    fetch('http://schuessling.com:3000/api/v1/user')
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            users: result
+          });
+        },
+        // error handler
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  
+
+  render() {
+
+    const { error, isLoaded, users } = this.state;
+
+    if (error) {
+      return (
+        <Text className="col">
+          Error: {error.message}
+        </Text>
+      );
+    } else if (!isLoaded) {
+      return (
+        <Text className="col">
+          Loading...
+        </Text>
+      );
+    } else {
+      return (
+        <Text className="col">
+         Stuff: {users.map(user=> <Text>{user.name}</Text>)}
+        </Text>
+      );
+    }
+  }
+}
+
+
+
+/*
+<NavigationContainer>
         
          <LoginNavigator/>
         
       </NavigationContainer>
-    );
-  }
-
-}
-
-/*
-<LoginNavigator/>
 */
-
-
