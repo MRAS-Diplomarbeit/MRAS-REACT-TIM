@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export const ApiLogin = (props) => {
 
@@ -53,6 +55,9 @@ export const ApiLogin = (props) => {
     }else{
         setNotOk(false);
         setData(jsonObject);
+        storeUserData(jsonObject);
+
+
     }
        
   
@@ -63,3 +68,13 @@ export const ApiLogin = (props) => {
 
 
 };
+
+const storeUserData = async (userObject) =>{
+  try {
+    const jsonValue = JSON.stringify(userObject)
+    await AsyncStorage.setItem('userKey', jsonValue);
+  } catch (e) {
+    console.log(e);
+  }
+} 
+ 
