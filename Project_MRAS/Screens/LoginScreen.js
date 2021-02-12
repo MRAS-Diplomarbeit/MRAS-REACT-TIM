@@ -12,7 +12,13 @@ import styles from "../Components/styles";
    const Login = ({navigation}) => {
 
     const [userName,setUsername] = useState("userName");
-    const [userPassword,setuserPassword] = useState("userPassword");
+    const [userPassword,setUserPassword] = useState("userPassword");
+
+   
+   const user={
+     userName: userName,
+     password: userPassword
+    }
 
     return(
           <ImageBackground blurRadius={5} style={styles.background} source={require("../assets/hintergrund.jpg")}>
@@ -23,12 +29,15 @@ import styles from "../Components/styles";
               <Text style={styles.frontpageheading}>Multiroom Audio Setup</Text>
               <Image fadeDuration={2500} source={require('../assets/logo2.png')}/>
               <Text style={styles.frontpageheading}>MRAS</Text>
+
+              
               <TextInput style={styles.textInput} placeholder="Username" onChangeText={text=>setUsername(text)}/>
-              <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password" onChangeText={text=>setuserPassword(text)}/>  
+              <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password" onChangeText={text=>setUserPassword(text)}/>  
 
              
 
-              <AppButton color = "secondary" title="Login" onPress={() => tryToLogin(navigation,userName,userPassword)}/>
+              <AppButton color = "secondary" title="Login" onPress={() => tryToLogin(navigation,user)}/>
+              
               
               
               <AppButton title="Register" onPress={() => navigation.navigate("Register")}/>
@@ -41,23 +50,24 @@ import styles from "../Components/styles";
           
           </ImageBackground>
    );
-  }
+  } 
 
 
 
 export default Login;
 
-const tryToLogin = (navigation,userName,userPassword) =>{
-  if((userName=="Test")&&(userPassword=="Cisco"))
-  {
-    navigation.navigate("Home");
-  
-  }
-  else
-  {
-    alert("Wrong Username or Password");
-  }
-}
+function tryToLogin(navigation,user) {
+
+  //navigation.navigate("Home");
+  navigation.navigate("ApiLogin",{UserDetail: user});
+ 
+ 
+} 
+
+
+
+
+
 
 
 

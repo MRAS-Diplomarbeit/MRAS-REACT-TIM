@@ -11,11 +11,15 @@ import { useState } from 'react';
 
 
 const Register = ({navigation}) => {
-
-    const [userName,setUsername] = useState("userName");
-    const [userPassword,setuserPassword] = useState("userPassword");
-    const [userPasswordConf,setuserPasswordConf] = useState("userPasswordConf");
-
+  const [userName,setUsername] = useState("userName");
+  const [userPassword,setUserPassword] = useState("userPassword");
+  const [userPasswordConfirmation,setUserPasswordConfirmation] = useState("userPasswordConfirmation");
+ 
+ const user={
+   userName: userName,
+   password: userPassword,
+   passwordConfirmation: userPasswordConfirmation
+  }
 
     return(
     <ImageBackground blurRadius={4} style={styles.background} source={require("../assets/hintergrund2.jpg")}>
@@ -27,11 +31,10 @@ const Register = ({navigation}) => {
       
       
         <TextInput style={styles.textInput} placeholder="Username" onChangeText={text=>setUsername(text)}/>
-        <TextInput style={styles.textInput} placeholder="Password" onChangeText={text=>setuserPassword(text)}/>  
-        <TextInput style={styles.textInput} placeholder="Confirm Password" onChangeText={text=>setuserPasswordConf(text)}/>
-     
+        <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password" onChangeText={text=>setUserPassword(text)}/>  
+        <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password Confirmation" onChangeText={text=>setUserPasswordConfirmation(text)}/>
       
-        <AppButton title="Register" onPress={() => tryToRegister(navigation,)}/>
+        <AppButton title="Register" onPress={() => tryToRegister(navigation,user)}/>
 
 
       </SafeAreaView>
@@ -43,17 +46,21 @@ const Register = ({navigation}) => {
 
 export default Register;
 
-const tryToRegister = (navigation,userName,userPassword,userPasswordConf) =>{
-  if(userName!="Test")
-  {
-    if(userPassword==userPasswordConf)
-    {
-      navigation.navigate("Home");
-    }
-  
+function tryToRegister(navigation,user) {
+
+
+
+
+  if(user.password==user.passwordConfirmation){
+    navigation.navigate("ApiRegister",{UserDetail: user});
   }
   else
   {
-    //alert(uniqueId);
+    alert("Passwords do not match!");
   }
-}
+
+  
+ 
+} 
+
+
