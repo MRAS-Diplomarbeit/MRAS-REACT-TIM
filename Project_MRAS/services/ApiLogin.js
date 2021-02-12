@@ -9,6 +9,7 @@ export const ApiLogin = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [isNotOk, setNotOk] = useState(true);
   const [data, setData] = useState([]);
+
    
 
 
@@ -35,9 +36,14 @@ export const ApiLogin = (props) => {
 
   return (
 
-    <View style={{ flex: 1, padding: 24 }}>
+    /*<View style={{ flex: 1, padding: 24 }}>
       {isLoading ? <Text>Loading...</Text> : (isNotOk ? (alert("FAILURE")) : (alert("SUCCESS")))} 
     </View>
+
+  */
+
+  data
+
   );
 
   function checkData  (jsonObject){
@@ -52,6 +58,8 @@ export const ApiLogin = (props) => {
         setNotOk(false);
         setData(jsonObject);
     }
+
+    
        
   
 
