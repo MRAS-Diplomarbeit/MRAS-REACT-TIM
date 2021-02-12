@@ -37,7 +37,7 @@ export const ApiRegister = (props) => {
   return (
 
     <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <Text>Loading...</Text> : (isNotOk ? (alert(data.message)) : (alert(data)))} 
+      {isLoading ? <Text>Loading...</Text> : (isNotOk ? (props.navigation.navigate("Register")) : (props.navigation.navigate("Login")))} 
     </View>
   );
 
@@ -58,4 +58,6 @@ export const ApiRegister = (props) => {
 
 }
 
+
 };
+

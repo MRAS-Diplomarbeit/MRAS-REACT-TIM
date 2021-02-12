@@ -29,10 +29,12 @@ const Register = ({navigation}) => {
 
         <Text style={styles.frontpageheading}>Multiroom Audio Setup</Text>
       
-      
-        <TextInput style={styles.textInput} placeholder="Username" onChangeText={text=>setUsername(text)}/>
-        <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password" onChangeText={text=>setUserPassword(text)}/>  
-        <TextInput style={styles.textInput} secureTextEntry={true} placeholder="Password Confirmation" onChangeText={text=>setUserPasswordConfirmation(text)}/>
+        <Text>Username</Text>
+        <TextInput style={styles.textInput} onChangeText={text=>setUsername(text)}/>
+        <Text>Password</Text>
+        <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={text=>setUserPassword(text)}/>  
+        <Text>Password Confirmation</Text>
+        <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={text=>setUserPasswordConfirmation(text)}/>
       
         <AppButton title="Register" onPress={() => tryToRegister(navigation,user)}/>
 
@@ -49,8 +51,10 @@ export default Register;
 function tryToRegister(navigation,user) {
 
 
-
-
+if (user.userName==""||user.userName==null) {
+  alert("Please fill in all fields!");
+}
+else{
   if(user.password==user.passwordConfirmation){
     navigation.navigate("ApiRegister",{UserDetail: user});
   }
@@ -58,6 +62,9 @@ function tryToRegister(navigation,user) {
   {
     alert("Passwords do not match!");
   }
+}
+
+  
 
   
  

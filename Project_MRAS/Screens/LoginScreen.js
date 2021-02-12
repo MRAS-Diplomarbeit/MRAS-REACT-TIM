@@ -4,6 +4,7 @@ import { StyleSheet,Button, View, Text,TextInput,ImageBackground,Image,SafeAreaV
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import AppButton from '../Components/Buttons/AppButton';
 import styles from "../Components/styles";
+import { ApiLogin } from "../services/ApiLogin";
 
 
 
@@ -59,8 +60,8 @@ export default Login;
 function tryToLogin(navigation,user) {
 
   //navigation.navigate("Home");
-  navigation.navigate("ApiLogin",{UserDetail: user});
- 
+ navigation.navigate("ApiLogin",{UserDetail: user});
+
  
 } 
 

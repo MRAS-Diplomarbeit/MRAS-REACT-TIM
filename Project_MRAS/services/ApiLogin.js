@@ -9,11 +9,11 @@ export const ApiLogin = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [isNotOk, setNotOk] = useState(true);
   const [data, setData] = useState([]);
-
    
 
 
   useEffect(() => {
+    
     console.log(props.route.params.UserDetail.userName);
     fetch('http://schuessling.com:3000/api/v1/user/login', {
         method: 'POST',
@@ -36,14 +36,10 @@ export const ApiLogin = (props) => {
 
   return (
 
-    /*<View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <Text>Loading...</Text> : (isNotOk ? (alert("FAILURE")) : (alert("SUCCESS")))} 
+   
+    <View style={{ flex: 1, padding: 24 }}>
+      {isLoading ? <Text>Loading...</Text> : (isNotOk ? ( props.navigation.navigate("Login")) : (props.navigation.navigate("Home")))} 
     </View>
-
-  */
-
-  data
-
   );
 
   function checkData  (jsonObject){
@@ -58,11 +54,12 @@ export const ApiLogin = (props) => {
         setNotOk(false);
         setData(jsonObject);
     }
-
-    
        
   
 
 }
+
+
+
 
 };
