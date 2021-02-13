@@ -23,6 +23,12 @@ const initSpeakers = [
         title: "Speaker 3",
         describtion: "Bens Rockster Air",
         room: "Bens Zimmer"
+    },
+    {
+        id: 4,
+        title: "Speaker 4",
+        describtion: "Bens Rockasdfster Air",
+        room: "Bensasdf Zimmer"
     }
 ]
 

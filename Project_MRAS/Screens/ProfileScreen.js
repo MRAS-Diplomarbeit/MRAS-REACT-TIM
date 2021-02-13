@@ -9,50 +9,60 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
-export const ProfileScreen = (props) => {
+const ProfileScreen = (props) => {
     
-
+const [data, setData] = useState([]);
+const [isLoading, setLoading] = useState(true);
  
-  const [data, setData] = useState([]);
+ 
    
-
+  
 
   useEffect(() => {
     
-    //console.log(props);
-    getData();
+    getData().finally(() => setLoading(false));
     
   }, []);
 
 
-  getData = async () => {
-    try { 
-      const jsonValue = await AsyncStorage.getItem('userKey');
-      const userProfile = JSON.parse(jsonValue);
-      setData(userProfile);
-      
-    } catch(e) {
-      // error reading value
-    }
-  } 
+ const getData = async () => {
+  try { 
+    const jsonValue = await AsyncStorage.getItem('userKey');
+    const userProfile = JSON.parse(jsonValue);
+    setData(userProfile);
+    
+  } catch(e) {
+    // error reading value
+  }
+}
     
 
   return (
     <ImageBackground blurRadius={4} style={styles.background} source={require("../assets/hintergrund.jpg")}>
-    <SafeAreaView style={styles.container}>
-      
-      <FrontPageHeading>Welcome User</FrontPageHeading>
-      <Image fadeDuration={2500} source={require('../assets/logo2.png')}/>
-      <FrontPageHeading>Welcome back: {data.user.username}</FrontPageHeading>
-      <Text>This is your Access_Token:</Text>
-     
-
-      {console.log(data)}
-      
-
     
-    </SafeAreaView>
+
+
+    {isLoading ? <Text>Loading...</Text> : (
+
+      <SafeAreaView style={styles.container}>
+      <FrontPageHeading> Welcome User </FrontPageHeading>
+      <Image fadeDuration={2500} source={require('../assets/logo2.png')}/>
+      <FrontPageHeading> Welcome back: {data.user.username}</FrontPageHeading>
+      <FrontPageHeading> This is your Access_Token: </FrontPageHeading>
+      <Text> {data.access_token} </Text>
+
+
+{console.log(data)}
+
+
+
+</SafeAreaView>
+      
+    ) } 
+     
     </ImageBackground>
+
+
 
   );
 
