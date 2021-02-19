@@ -1,20 +1,22 @@
-import * as React from 'react';
 import { StyleSheet,Button, View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import MainTabNavigator from '../routes/MainTabNavigator';
+import React, { useEffect, useState } from 'react';
 
 
 
 
-const HomeScreen = ({navigation}) => {
+
+
+
+
+const HomeScreen = (props) => {
+
+
+
+
     return (
-
-      
-      
-      <MainTabNavigator />
-
-     
-        
+      <MainTabNavigator userInfo={props.route.params.userData}/>
       );
 }
 

@@ -6,16 +6,16 @@ import {MaterialIcons} from '@expo/vector-icons';
 import Subheading from '../Subheading';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-function Card({title, describtion, room, onPress, renderRightActions}) {                //renderLeftActions -> Bluetooth aktivieren
+function Card({name, description, room_id, onPress, renderRightActions}) {                //renderLeftActions -> Bluetooth aktivieren
     return (
         <Swipeable renderRightActions={renderRightActions}>
             <TouchableOpacity onPress={onPress}>
                 <View style={styles.cardoverall}>
                     <MaterialIcons name = "speaker" size={55}/>
                     <View style={styles.cardtop}>
-                        <AppText>{title}</AppText>
-                        <Subheading>{describtion}</Subheading>
-                        <Subheading style={{paddingLeft: "10"}}>Raum: {room}</Subheading>
+                        <AppText>{name}</AppText>
+                        <Subheading>{description}</Subheading>
+                        <Subheading style={{paddingLeft: "10"}}>Raum: {room_id}</Subheading>
                     </View>
                 </View>
             </TouchableOpacity>

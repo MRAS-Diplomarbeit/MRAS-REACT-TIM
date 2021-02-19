@@ -11,54 +11,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ProfileScreen = (props) => {
     
-const [data, setData] = useState([]);
-const [isLoading, setLoading] = useState(true);
- 
- 
-   
-  
-
-  useEffect(() => {
-    
-    getData().finally(() => setLoading(false));
-    
-  }, []);
-
-
- const getData = async () => {
-  try { 
-    const jsonValue = await AsyncStorage.getItem('userKey');
-    const userProfile = JSON.parse(jsonValue);
-    setData(userProfile);
-    
-  } catch(e) {
-    // error reading value
-  }
-}
     
 
   return (
     <ImageBackground blurRadius={4} style={styles.background} source={require("../assets/hintergrund.jpg")}>
-    
 
-
-    {isLoading ? <Text>Loading...</Text> : (
+   
 
       <SafeAreaView style={styles.container}>
-      <FrontPageHeading> Welcome User </FrontPageHeading>
+      <FrontPageHeading> Welcome {props.userInfo.user.username} </FrontPageHeading>
       <Image fadeDuration={2500} source={require('../assets/logo2.png')}/>
-      <FrontPageHeading> Welcome back: {data.user.username}</FrontPageHeading>
       <FrontPageHeading> This is your Access_Token: </FrontPageHeading>
-      <Text> {data.access_token} </Text>
-
-
-{console.log(data)}
-
-
-
-</SafeAreaView>
+      <Text> {props.userInfo.access_token} </Text>
+      </SafeAreaView>
       
-    ) } 
+
      
     </ImageBackground>
 

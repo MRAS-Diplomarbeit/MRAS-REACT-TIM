@@ -11,17 +11,20 @@ export const ApiLogin = (props) => {
   const [isLoading, setLoading] = useState(true);
   const [isNotOk, setNotOk] = useState(true);
   const [data, setData] = useState([]);
+
    
 
 
   useEffect(() => {
-    
-    console.log(props.route.params.UserDetail.userName);
+
     fetch('http://schuessling.com:3000/api/v1/user/login', {
         method: 'POST',
+     
+        //del
         headers: {
           'Content-Type': 'application/json'
         },
+
         body: JSON.stringify({
             
             "username": props.route.params.UserDetail.userName,
@@ -40,13 +43,13 @@ export const ApiLogin = (props) => {
 
    
     <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <Text>Loading...</Text> : (isNotOk ? ( props.navigation.navigate("Login")) : (props.navigation.navigate("Home")))} 
+      {isLoading ? <Text>Loading...</Text> : (isNotOk ? ( props.navigation.navigate("Login")) : (props.navigation.navigate("Home",{userData: data})))} 
     </View>
   );
 
   function checkData  (jsonObject){
 
-    console.log(jsonObject);
+    //console.log(jsonObject);
 
     if(jsonObject.code != null) 
     {
@@ -55,7 +58,7 @@ export const ApiLogin = (props) => {
     }else{
         setNotOk(false);
         setData(jsonObject);
-        storeUserData(jsonObject);
+       // storeUserData(jsonObject);
 
 
     }
@@ -63,9 +66,6 @@ export const ApiLogin = (props) => {
   
 
 }
-
-
-
 
 };
 

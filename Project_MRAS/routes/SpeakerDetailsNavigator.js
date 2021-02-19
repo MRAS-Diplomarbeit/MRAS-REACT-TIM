@@ -9,11 +9,17 @@ import SpeakerOverview from '../Screens/SpeakerOverview';
 
 const Stack = createStackNavigator();
 
-const SpeakerNavigator = () => (
+const SpeakerNavigator = (props) => (
 
 <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="SpeakerOverview" component={SpeakerOverview}/>
+    <Stack.Screen 
+    name="SpeakerOverview" 
+    children={()=><SpeakerOverview userInfo={props.userInfo}/>}
+    />
     <Stack.Screen name="SpeakerDetails" component={SpeakerDetails} />
+
+
+    
     
 </Stack.Navigator>
 
